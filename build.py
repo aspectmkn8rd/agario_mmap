@@ -3,7 +3,7 @@
 from __future__ import unicode_literals, division
 import pyperclip
 
-content = None
+content = []
 
 with open('run.js', 'r') as f:
     content = f.readlines()

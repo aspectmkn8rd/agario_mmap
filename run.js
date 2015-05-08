@@ -34,11 +34,13 @@ interval_ids.push(interval_id);
 
 function run() {
     setNick("mkn8rd");
-    var now = new Date();
-    var my = {}; // t0d0 my.x, my.y
-    var map = {}; // t0d0 map.max_x, map.max_y
-    onscrean.innerText = 'x: ' + now.toLocaleString() + ' / ' + '123';
+    var map = {
+        'x': K,
+        'y': L
+    };
+    var my = m[0];
+    onscrean.innerText = 'x: ' + my.x + ' / ' + map.x;
     onscrean.innerText += '\n';
-    onscrean.innerText += 'y: ' + now.toLocaleString() + ' / ' + '123';
+    onscrean.innerText += 'y: ' + my.y + ' / ' + map.y;
     onscrean.innerText += '\n';
 }
