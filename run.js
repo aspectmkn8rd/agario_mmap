@@ -1,6 +1,4 @@
-// connect("ws://45.33.103.22:443")
-
-var data = p; // breakpoint on 500 in main_out.js
+var data = p; // breakpoint on :500 in main_out.js
 
 // onscrean console
 if (typeof onscrean !== 'undefined') {
