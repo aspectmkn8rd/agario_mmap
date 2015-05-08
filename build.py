@@ -19,7 +19,8 @@ class RuntimeCode():
             if value.lower() not in ['true', 'false']:
                 self.text[i] = line.replace(s_, value)
             else:
-                self.text[i] = line.replace(s_, value.lower())
+                self.text[i] = line.replace('\'' + s_ + '\'', value.lower())
+                self.text[i] = line.replace('\"' + s_ + '\"', value.lower())
 
     def apply_settings(self, filename):
         with open(filename, 'r') as f:
@@ -27,9 +28,6 @@ class RuntimeCode():
         for param, value in settings.iteritems():
             if value:
                 self.substitute_param(param, value)
-        for i, line in enumerate(self.text):
-            self.text[i] = line.replace('\"true\"', 'true')
-            self.text[i] = line.replace('\"false\"', 'false')
 
     def copy_to_clipboard(self):
         return pyperclip.copy(''.join(self.text))
