@@ -33,7 +33,7 @@ interval_ids.push(interval_id);
 // =====================================================
 
 function run() {
-    setNick("mkn8rd");
+    setNick("SETTINGS_NICKNAME");
     var map = {
         'x': K,
         'y': L
