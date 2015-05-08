@@ -1,4 +1,6 @@
 {
   "nickname": "mkn8rd",
-  "url": "ws://45.33.103.22:443"
+  "region": "Russia",
+  "url": "ws://45.33.103.22:443",
+  "show_mass": "false"
 }

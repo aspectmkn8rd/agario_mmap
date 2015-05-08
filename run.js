@@ -31,7 +31,9 @@ interval_ids.push(interval_id);
 // =====================================================
 
 function run() {
+    setRegion("SETTINGS_REGION");
     setNick("SETTINGS_NICKNAME");
+    setShowMass("SETTINGS_SHOW_MASS");
     var map = {
         'x': K,
         'y': L
