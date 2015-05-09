@@ -1,1 +1,3 @@
+CoffeeScript==1.1.0
+PyExecJS==1.1.0
 pyperclip==1.5.9

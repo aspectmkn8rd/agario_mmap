@@ -1,6 +1,6 @@
 // breakpoint on :500 in main_out.js
 
-// #include onscrean_console.js
+// #include onscrean_console.coffee
 // #include mmap.js
 
 if (typeof interval_ids !== 'undefined') {
