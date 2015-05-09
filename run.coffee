@@ -3,16 +3,15 @@
 ### include onscrean_console.coffee ###
 ### include mmap.coffee ###
 
-# fixme not working correctly
-if interval_ids?
-  for i in interval_ids
+if window.interval_ids?
+  for i in window.interval_ids
     clearInterval i
 else
-  interval_ids = []
-interval_id = setInterval(->
+  window.interval_ids = []
+window.interval_id = setInterval(->
   run()
 , 50)
-interval_ids.push interval_id
+window.interval_ids.push window.interval_id
 
 run = () ->
   setRegion("SETTINGS_REGION")
@@ -23,7 +22,7 @@ run = () ->
     x: K,
     y: L
   me = m[0]
-  targets = w
+  targets = p
 
   update_onscrean_console(me)
   draw_mmap(me, map, targets)

@@ -21,7 +21,8 @@ class RuntimeCode():
                     with open(module_name, 'r') as f:
                         self.text[i] = f.read()
                 elif '.coffee' in line:
-                    self.text[i] = coffeescript.compile_file(module_name)
+                    self.text[i] = coffeescript.compile_file(module_name).split('\n')[1:-2]
+                    self.text[i] = '\n'.join(self.text[i])
 
     def apply_settings(self, filename):
         def substitute_param(param, value):
