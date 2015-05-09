@@ -22,6 +22,13 @@ class RuntimeCode():
                 self.text[i] = line.replace('\'' + s_ + '\'', value.lower())
                 self.text[i] = line.replace('\"' + s_ + '\"', value.lower())
 
+    def include_submodules(self):
+        for i, line in enumerate(self.text):
+            if '// include' in line:
+                module_name = line.split('// include')[1].strip()
+                with open(module_name, 'r') as f:
+                    self.text[i] = ''.join(f.readlines())
+
     def apply_settings(self, filename):
         with open(filename, 'r') as f:
             settings = load(f)
@@ -35,9 +42,6 @@ class RuntimeCode():
 
 if __name__ == "__main__":
     rc = RuntimeCode('run.js')
+    rc.include_submodules()
     rc.apply_settings('settings.json')
     rc.copy_to_clipboard()
-
-
-
-

@@ -5,11 +5,13 @@ if (typeof main_canvas !== 'undefined') {
     document.body.removeChild(mmap_canvas);
 }
 
-var mmap_proportion = 5;
+var MMAP_PROPORTION = 4.5;
+var SIZE_DELIM = 40; // t0d0
+
 var main_canvas = document.getElementById('canvas');
 var mmap_canvas = document.createElement('canvas');
-mmap_canvas.width = window.innerWidth / mmap_proportion;
-mmap_canvas.height = window.innerWidth / mmap_proportion;
+mmap_canvas.width = window.innerWidth / MMAP_PROPORTION;
+mmap_canvas.height = window.innerWidth / MMAP_PROPORTION;
 mmap_canvas.id = 'mmap_canvas';
 mmap_canvas.style.border = "black 1px solid";
 mmap_canvas.style.position = 'fixed';
@@ -48,47 +50,7 @@ var interval_id = setInterval(function () {
 }, 50);
 interval_ids.push(interval_id);
 // =====================================================
-function draw_mmap(me, map) {
-    mmap_canvas.width = window.innerWidth / mmap_proportion;
-    mmap_canvas.height = window.innerWidth / mmap_proportion;
-    var ctx = mmap_canvas.getContext('2d');
-    ctx.fillStyle = "#F2FBFF";
-    ctx.fillRect(0, 0, mmap_canvas.width, mmap_canvas.width);
-
-    ctx.beginPath();
-    var SIZE_DELIM = 20;
-    pr_x = me.x / map.x;
-    pr_y = me.y / map.y;
-    ctx.arc(
-        pr_x * mmap_canvas.width,
-        pr_y * mmap_canvas.height,
-        me.size / SIZE_DELIM,
-        0,
-        2 * Math.PI
-    );
-    ctx.fillStyle = me.color;
-    ctx.fill();
-
-    for (var i = 0; i < data.length; i++) {
-        var target = data[i];
-        if (target.isVirus) {
-        }
-        else {
-            ctx.beginPath();
-            pr_x = target.x / map.x;
-            pr_y = target.y / map.y;
-            ctx.arc(
-                pr_x * mmap_canvas.width,
-                pr_y * mmap_canvas.height,
-                target.size / SIZE_DELIM,
-                0,
-                2 * Math.PI
-            );
-            ctx.fillStyle = target.color;
-            ctx.fill();
-        }
-    }
-}
+// include mmap.js
 // =====================================================
 function run() {
     setRegion("SETTINGS_REGION");
@@ -97,11 +59,10 @@ function run() {
 
     var map = {'x': K, 'y': L};
     var me = m[0];
+    var targets = w;
 
-    onscrean.innerText = 'x: ' + me.x + ' / ' + map.x;
-    onscrean.innerText += '\n';
-    onscrean.innerText += 'y: ' + me.y + ' / ' + map.y;
-    onscrean.innerText += '\n';
+    onscrean.innerText = 'me.x: ' + me.x + '\n';
+    onscrean.innerText += 'me.y: ' + me.y + '\n';
 
-    draw_mmap(me, map);
+    draw_mmap(me, map, targets);
 }
