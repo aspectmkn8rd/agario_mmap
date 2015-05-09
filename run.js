@@ -1,4 +1,4 @@
-var data = p; // breakpoint on :500 in main_out.js
+// breakpoint on :500 in main_out.js
 
 // mmap canvas
 if (typeof main_canvas !== 'undefined') {
