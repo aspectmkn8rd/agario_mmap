@@ -52,10 +52,10 @@ draw_mmap = (me, map, targets) ->
 
   # others
   for target_id, target of targets
+    pr_x = target.x / map.x
+    pr_y = target.y / map.y
     if not target.isVirus
       ctx.beginPath()
-      pr_x = target.x / map.x
-      pr_y = target.y / map.y
       ctx.arc(
         pr_x * mmap_canvas.width,
         pr_y * mmap_canvas.height,
@@ -64,4 +64,19 @@ draw_mmap = (me, map, targets) ->
         2 * Math.PI
       )
       ctx.fillStyle = target.color
+      ctx.lineWidth = 5
+      ctx.strokeStyle = '#FFFFFF'
+      ctx.fill()
+    else
+      ctx.beginPath()
+      ctx.arc(
+        pr_x * mmap_canvas.width,
+        pr_y * mmap_canvas.height,
+        target.size / SIZE_DELIM,
+        0,
+        2 * Math.PI
+      )
+      ctx.fillStyle = target.color
+      ctx.lineWidth = 5
+      ctx.strokeStyle = '#FFFFFF' # t0d0 virus special border
       ctx.fill()
