@@ -49,9 +49,9 @@ var interval_id = setInterval(function () {
     run();
 }, 50);
 interval_ids.push(interval_id);
-// =====================================================
-// include mmap.js
-// =====================================================
+
+// #include mmap.js
+
 function run() {
     setRegion("SETTINGS_REGION");
     setNick("SETTINGS_NICKNAME");
