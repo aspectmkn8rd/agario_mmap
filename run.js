@@ -20,22 +20,10 @@ mmap_canvas.style.bottom = 10;
 mmap_canvas.style.whiteSpace = 'pre';
 document.body.appendChild(mmap_canvas);
 
-// =====================================================
-// onscrean console
-if (typeof onscrean !== 'undefined') {
-}
-else {
-    var onscrean = document.createElement('div');
-    document.body.appendChild(onscrean);
-}
-onscrean.style.position = 'fixed';
-onscrean.style.left = 0;
-onscrean.style.top = 0;
-onscrean.style.whiteSpace = 'pre';
-onscrean.innerHTML = "";
-// =====================================================
+// #include onscrean_console.js
 
 // intervals
+
 if (typeof interval_ids !== 'undefined') {
 }
 else {
@@ -61,8 +49,6 @@ function run() {
     var me = m[0];
     var targets = w;
 
-    onscrean.innerText = 'me.x: ' + me.x + '\n';
-    onscrean.innerText += 'me.y: ' + me.y + '\n';
-
+    update_onscrean_console(me);
     draw_mmap(me, map, targets);
 }
