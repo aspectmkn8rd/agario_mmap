@@ -8,23 +8,20 @@ from json import load
 
 class RuntimeCode():
     def __init__(self, filename):
-        with open(filename, 'r') as f:
-            self.text = f.readlines()
+        self.text = coffeescript.compile_file(filename).split('\n')
 
     def __repr__(self):
-        return ''.join(self.text)
+        return '\n'.join(self.text)
 
     def include_modules(self):
         for i, line in enumerate(self.text):
-            if '// #include' in line:
+            if '/* include' in line:
+                module_name = line.split()[2].strip()
                 if '.js' in line:
-                    module_name = line.split('// #include')[1].strip()
                     with open(module_name, 'r') as f:
-                        self.text[i] = ''.join(f.readlines())
+                        self.text[i] = f.read()
                 elif '.coffee' in line:
-                    module_name = line.split('// #include')[1].strip()
-                    with open(module_name, 'r') as f:
-                        self.text[i] = ''.join(coffeescript.compile(f.read()))
+                    self.text[i] = coffeescript.compile_file(module_name)
 
     def apply_settings(self, filename):
         def substitute_param(param, value):
@@ -42,16 +39,12 @@ class RuntimeCode():
             if value:
                 substitute_param(param, value)
 
-    def to_js(self):
-        self.text = coffeescript.compile(self.text)
-
     def copy_to_clipboard(self):
         return pyperclip.copy(''.join(self.text))
 
 
 if __name__ == "__main__":
-    rc = RuntimeCode('run.js')
+    rc = RuntimeCode('run.coffee')
     rc.include_modules()
     rc.apply_settings('settings.json')
-    # rc.to_js()
     rc.copy_to_clipboard()
