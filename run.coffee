@@ -3,13 +3,13 @@
 ### include onscrean_console.coffee ###
 ### include mmap.coffee ###
 
+# fixme not working correctly
 if interval_ids?
   for i in interval_ids
-    window.clearInterval i
+    clearInterval i
 else
   interval_ids = []
-
-interval_id = window.setInterval(->
+interval_id = setInterval(->
   run()
 , 50)
 interval_ids.push interval_id
