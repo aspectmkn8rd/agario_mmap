@@ -48,16 +48,46 @@ var interval_id = setInterval(function () {
 }, 50);
 interval_ids.push(interval_id);
 // =====================================================
-function draw_mmap(my, map) {
+function draw_mmap(me, map) {
+    mmap_canvas.width = window.innerWidth / mmap_proportion;
+    mmap_canvas.height = window.innerWidth / mmap_proportion;
     var ctx = mmap_canvas.getContext('2d');
     ctx.fillStyle = "#F2FBFF";
     ctx.fillRect(0, 0, mmap_canvas.width, mmap_canvas.width);
 
     ctx.beginPath();
-    pr_x = my.x / map.x;
-    pr_y = my.y / map.y;
-    ctx.arc(pr_x * mmap_canvas.width, pr_y * mmap_canvas.height / 2, 3, 0, 2 * Math.PI);
-    ctx.stroke();
+    var SIZE_DELIM = 20;
+    pr_x = me.x / map.x;
+    pr_y = me.y / map.y;
+    ctx.arc(
+        pr_x * mmap_canvas.width,
+        pr_y * mmap_canvas.height,
+        me.size / SIZE_DELIM,
+        0,
+        2 * Math.PI
+    );
+    ctx.fillStyle = me.color;
+    ctx.fill();
+
+    for (var i = 0; i < data.length; i++) {
+        var target = data[i];
+        if (target.isVirus) {
+        }
+        else {
+            ctx.beginPath();
+            pr_x = target.x / map.x;
+            pr_y = target.y / map.y;
+            ctx.arc(
+                pr_x * mmap_canvas.width,
+                pr_y * mmap_canvas.height,
+                target.size / SIZE_DELIM,
+                0,
+                2 * Math.PI
+            );
+            ctx.fillStyle = target.color;
+            ctx.fill();
+        }
+    }
 }
 // =====================================================
 function run() {
@@ -65,16 +95,13 @@ function run() {
     setNick("SETTINGS_NICKNAME");
     setShowMass("SETTINGS_SHOW_MASS");
 
-    var map = {
-        'x': K,
-        'y': L
-    };
-    var my = m[0];
+    var map = {'x': K, 'y': L};
+    var me = m[0];
 
-    onscrean.innerText = 'x: ' + my.x + ' / ' + map.x;
+    onscrean.innerText = 'x: ' + me.x + ' / ' + map.x;
     onscrean.innerText += '\n';
-    onscrean.innerText += 'y: ' + my.y + ' / ' + map.y;
+    onscrean.innerText += 'y: ' + me.y + ' / ' + map.y;
     onscrean.innerText += '\n';
 
-    draw_mmap(my, map);
+    draw_mmap(me, map);
 }
