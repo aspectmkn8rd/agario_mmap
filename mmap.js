@@ -1,3 +1,20 @@
+var MMAP_PROPORTION = 4.5;
+var SIZE_DELIM = 40;
+if (typeof main_canvas !== 'undefined') {
+    document.body.removeChild(mmap_canvas);
+}
+var main_canvas = document.getElementById('canvas');
+var mmap_canvas = document.createElement('canvas');
+mmap_canvas.width = window.innerWidth / MMAP_PROPORTION;
+mmap_canvas.height = window.innerWidth / MMAP_PROPORTION;
+mmap_canvas.id = 'mmap_canvas';
+mmap_canvas.style.border = "black 1px solid";
+mmap_canvas.style.position = 'fixed';
+mmap_canvas.style.right = 10;
+mmap_canvas.style.bottom = 10;
+mmap_canvas.style.whiteSpace = 'pre';
+document.body.appendChild(mmap_canvas);
+
 function draw_mmap(me, map, targets) {
     mmap_canvas.width = window.innerWidth / MMAP_PROPORTION;
     mmap_canvas.height = window.innerWidth / MMAP_PROPORTION;
