@@ -2,6 +2,7 @@
 
 ### include onscrean_console.coffee ###
 ### include mmap.coffee ###
+### include keller.coffee ###
 
 if window.interval_ids?
   for i in window.interval_ids
@@ -24,5 +25,6 @@ run = () ->
   me = m[0]
   targets = p
 
-  update_onscrean_console(me)
+  # update_onscrean_console(me)
   draw_mmap(me, map, targets)
+  keller(me, map, targets)
