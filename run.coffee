@@ -19,8 +19,8 @@ run = () ->
   setShowMass("SETTINGS_SHOW_MASS")
 
   map =
-    x: K,
-    y: L
+    x: G,
+    y: H
   me = m[0]
   targets = p
 
