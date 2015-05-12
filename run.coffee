@@ -27,4 +27,4 @@ run = () ->
 
   # update_onscrean_console(me)
   draw_mmap(me, map, targets)
-  keller(me, map, targets)
+  # bot(me, map, targets)

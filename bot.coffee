@@ -1,4 +1,4 @@
-keller = (me, map, targets) ->
+bot = (me, map, targets) ->
   canvas = main_canvas
 
   offX = map.x
