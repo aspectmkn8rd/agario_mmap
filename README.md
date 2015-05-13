@@ -14,7 +14,8 @@ there are: working minimap; an option to write custom onscrean console and bot.
 
 1. git clone this project
 2. create new python 2.7 virtualenv (preferably by using **virtualenvwrapper**)
-3. create **settings.json** in project dir, example of such:
+3. ```pip install -r requirements.txt```
+4. create **settings.json** in project dir, example of such:
    
 ```json
 {
