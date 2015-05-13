@@ -2,7 +2,7 @@
 
 ### include onscrean_console.coffee ###
 ### include mmap.coffee ###
-### include keller.coffee ###
+### include bot.coffee ###
 
 if window.interval_ids?
   for i in window.interval_ids

@@ -1,6 +1,8 @@
 bot = (me, map, targets) ->
   canvas = main_canvas
 
+  # here can be yr bot code
+
   offX = map.x
   offY = map.y
 
